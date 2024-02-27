@@ -1,23 +1,45 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  let [counter, setCounter] = useState(0);
+
+  function handleUp(){
+    setCounter(++counter);
+  }
+  
+  function handleDown(){
+  if (counter>0){
+    setCounter(--counter);
+  }
+  else{
+    alert("0 cannot be decreased");
+  }
+    
+  }
+  
+  function handleReset(){
+    setCounter(0);
+  }
+  
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+     <h2>Counter App</h2>
+     <span className="counter" >{counter}</span>
+
+      <div class="div_button">
+
+      <button id="buttonIncrease" onClick={() => handleUp()}>+</button>
+      <button id="buttonDecrease " onClick={() => handleDown()}>-</button>
+      <button id="buttonReset " onClick={() => handleReset()}>0</button>
+
+    </div>
+
     </div>
   );
 }
